@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Stat Calculator  </title>
+<link rel="stylesheet" type="text/css" href="statcalculator.css">
+
+
+
+</head>
+<body>
+
+<div id="skeleton">
+<div class="webpage">
+<form name="calculator">
+<input type="text" name="display" id="scn" size="30" readonly max-width="50">
+</form></div>
+
+<div class="buttons">
+
+
+
+
+
+     <br>  
+     <p>
+	    <input type="button" value="[" class = "button brown"
+		onclick="calculator.display.value+='['"/>
+		<input type="button" value="," class = "button brown"
+		onclick="calculator.display.value+=','"/>
+	    <input type="button" value="]" class = "button brown"
+		onclick="calculator.display.value+=']'"/>
+		<input type="button" value="(" class = "button brown"
+		onclick="calculator.display.value+='('"/>
+		<input type="button" value=")" class = "button brown"
+		onclick="calculator.display.value+=')'"/>
+	<br>
+	<p>
+			
+		<input type="button" value="sum" class = "button blue"
+		onclick="sumArray()"/>
+		<input type="button" value="E(x)" class = "button blue"
+		onclick="Expectation()"/>
+	    <input type="button" value="Var(x)" class = "button blue"
+		onclick="Variance()"/>
+	    <input type="button" value="SD(x)" class = "button blue"
+		onclick="standard()"/>	    
+		<input type="button" value="rank" class = "button blue"
+		onclick="ran()"/>
+			
+	<br>
+	<p>
+		<input type="button" value="median" class = "button blue"
+		onclick="media()"/>
+	   	<input type="button" value="mode" class = "button blue"
+		onclick="modee()"/>
+		<input type="button" value="range" class = "button blue"
+		onclick="rang()"/>
+		<input type="button" value="geom" class = "button blue"
+		onclick="geom()"/>
+		<input type="button" value="EXP" class = "button blue"
+		onclick="ex()"/>
+    
+	<br>
+	<p>
+		<input type="button" value="!" class = "button blue"
+		onclick="fact()"/>
+		<input type="button" value="ln" class = "button blue"
+		onclick="naturallog()"/>
+		<input type="button" value="log" class = "button blue"
+		onclick="lo()"/>
+	    <input type="button" value="save" class = "button brown" 
+		onclick="save()">
+		<input type="button" value="load" class = "button brown"
+		onclick="load()">
+
+		
+	<br>
+    <p>
+	    <input type="button" value="1" class = "button black"
+		onclick="calculator.display.value+='1'"/>
+		<input type="button" value="2" class = "button black"
+		onclick="calculator.display.value+='2'"/>
+		<input type="button" value="3" class = "button black"
+		onclick="calculator.display.value+='3'"/>
+		<input type="button" value="+" class = "button silver"
+		onclick="calculator.display.value+='+'"/>
+		<input type="button" value="-" class = "button silver"
+		onclick="calculator.display.value+='-'"/>
+
+	<br>
+     <p>
+	    <input type="button" value="4" class = "button black"
+		onclick="calculator.display.value+='4'"/>
+		<input type="button" value="5" class = "button black"
+		onclick="calculator.display.value+='5'"/>
+		<input type="button" value="6" class = "button black"
+		onclick="calculator.display.value+='6'"/>
+		<input type="button" value="x" class = "button silver"
+		onclick="calculator.display.value+='*'"/>
+		<input type="button" value="/" class = "button silver"
+		onclick="calculator.display.value+='/'"/>
+
+	<br>
+	 <p>
+	    <input type="button" value="7" class = "button black"
+		onclick="calculator.display.value+='7'"/>
+		<input type="button" value="8" class = "button black"
+		onclick="calculator.display.value+='8'"/>
+		<input type="button" value="9" class = "button black"
+		onclick="calculator.display.value+='9'"/>
+		<input type="button" value="DEL" class = "button silver"
+		onclick="calculator.display.value =''"/>
+		<input type="button" value="=" class = "button silver"
+		onclick="equal()"/>
+	
+	<br>
+	<p>
+	
+	    <input type="button" value="0" class = "button black"
+		onclick="calculator.display.value+='0'">
+        <input type="button" value="." class = "button brown"
+		onclick="calculator.display.value+='.'">
+	    <input type="button" value="PI" class = "button brown" 
+		onclick="PI()">
+		<input type="button" value="(-)" class = "button silver"
+		onclick="changeSign()">
+		<input type="button" value="*back" class = "button green"
+		onclick="location.href='index.html'">
+	<br>
+		
+<SCRIPT>
+var valueSaved = "";
+
+function save() {
+valueSaved = document.calculator.display.value;
+}
+
+function load() {
+document.calculator.display.value += valueSaved;
+}
+
+function changeSign() {
+document.calculator.display.value = -1*(document.calculator.display.value);
+}
+
+function sumArray() {
+document.calculator.display.value += "sum([";
+}
+
+function sum(array) {
+  for (
+    var
+      index = 0,              
+      length = array.length,  
+      sum = 0;                
+      index < length;         
+      sum += array[index++]   
+  );
+  return sum;
+}
+
+
+
+function Expectation() {
+document.calculator.display.value += "average([";
+}
+
+function average(array) {
+  for (
+    var
+      index = 0,              
+      length = array.length,  
+      sum = 0;                
+      index < length;         
+      sum += array[index++]   
+  );
+  return sum / length;
+}
+
+function Variance() {
+ document.calculator.display.value += "variance([";
+}
+
+function variance(array) {
+var squaredsum = 0;
+var x;
+
+for (x in array) {
+  element = array[x] - average(array);
+  squaredsum += element*element;
+}
+
+return squaredsum/(array.length - 1);
+
+}
+
+function standard(){
+ document.calculator.display.value += "SD([";
+}
+
+function SD(array) {
+return Math.sqrt(variance(array));
+}
+
+function swap(array, firstIndex, secondIndex){
+    var temp = array[firstIndex];
+    array[firstIndex] = array[secondIndex];
+    array[secondIndex] = temp;
+}
+
+function selectionSort(array){
+
+    var len = array.length,
+        min;
+
+    for (i=0; i < len; i++){
+
+        min = i;
+
+        for (j=i+1; j < len; j++){
+            if (array[j] < array[min]){
+                min = j;
+            }
+        }
+
+        if (i != min){
+            swap(array, i, min);
+        }
+    }
+}
+
+function ran(){
+ document.calculator.display.value += "rank([";
+}
+
+function rank(array) {
+selectionSort(array);
+return array;
+}
+
+
+function media(){
+ document.calculator.display.value += "median([";
+}
+
+function median(array) {
+selectionSort(array);
+
+if (array.length%2 == 0) {
+return (array[array.length/2] + array[array.length/2-1])/2
+} else{
+return array[array.length/2-0.5];
+}
+}
+
+function modee() {
+document.calculator.display.value += "mode([";
+}
+
+function mode(array) {
+var mode = 0;
+var count = 0;
+  for(var i = 0; i < array.length; i++){
+    for(var j = 0; j < i; j++){
+       if(array[j] === array[i]){
+          mode = array[j];
+           count++;
+           console.log(count);
+       }
+    }
+  }
+  if (mode == 0) {
+  return "None";
+  }
+  
+  return mode;
+
+}
+
+function rang() {
+document.calculator.display.value += "range([";
+}
+
+function range(array) {
+selectionSort(array);
+return (array[array.length-1] - array[0]);
+}
+
+function geom() {
+document.calculator.display.value += "geometricMean([";
+}
+
+function geometricMean(array) {
+var x;
+var product = 1;
+for (x in array) {
+product *= array[x];
+}
+return Math.pow(product,1/(array.length));
+}
+
+function naturallog(){
+document.calculator.display.value += "ln(";
+}
+function ln(value) {
+return (Math.log(value));
+}
+
+function lo(){
+document.calculator.display.value += "log(";
+}
+function log(value) {
+return (Math.log(value)) / ln(10);
+}
+
+
+function factorial(){
+document.calculator.display.value += "factorial(";
+}
+
+
+function fact(){
+document.calculator.display.value += "factorial(";
+}
+
+function factorial(value) {
+if (value < 0) {
+    return NaN;	
+  } else if (value == 0) {
+      return 1;	  
+  } else {
+      return (value * factorial(value - 1));
+  }
+}
+
+
+function PI(){
+document.calculator.display.value += "pi()";
+}
+function pi(){
+return Math.PI;
+}
+
+function ex(){
+document.calculator.display.value += "exp(";
+}
+function exp(value) {
+return (Math.exp(value));
+}
+
+
+function equal(){
+document.calculator.display.value=eval(calculator.display.value);
+}
+
+</script>
+	
+	
+
+</form>
+
+</div>
+
+</body>
+</html>

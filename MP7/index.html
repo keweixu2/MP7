@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Stat Calculator (test version) </title>
+<link rel="stylesheet" type="text/css" href="calculator.css">
+
+
+
+</head>
+<body>
+
+<div id="skeleton">
+<div class="webpage">
+<form name="calculator">
+<input type="text" name="display" id="scn" size="30" readonly max-width="50">
+</form></div>
+
+<div class="buttons">
+
+	<br>
+	<p>
+	    <input type="button" value="EXP" class = "button blue"
+		onclick="ex()">
+	    <input type="button" value="abs" class = "button blue"
+		onclick="ab()">
+        <input type="button" value="E" class = "button blue"
+		onclick="EE()">
+	    <input type="button" value="save" class = "button brown" 
+		onclick="save()">
+		<input type="button" value="load" class = "button brown"
+		onclick="load()">
+
+
+  
+     <br>
+	 <p>
+	    <input type="button" value="mod" class = "button blue"
+		onclick="calculator.display.value+='%'"/>
+	    <input type="button" value="sin" class = "button blue"
+		onclick="si()"/>
+		<input type="button" value="cos" class = "button blue"
+		onclick="co()"/>
+		<input type="button" value="tan" class = "button blue"
+		onclick="ta()"/>
+		<input type="button" value="arcsin" class = "button blue"
+		onclick="arcs()"/>
+    
+	<br>
+	<p>
+	    <input type="button" value="arccos" class = "button blue"
+		onclick="arcc()"/>
+	   	<input type="button" value="arctan" class = "button blue"
+		onclick="arct()"/>
+		<input type="button" value="ln" class = "button blue"
+		onclick="naturallog()"/>
+		<input type="button" value="log" class = "button blue"
+		onclick="lo()"/>
+		<input type="button" value="sqrt" class = "button blue"
+		onclick="sqr()"/>
+    
+	<br>
+	<p>
+		<input type="button" value="!" class = "button blue"
+		onclick="fact()"/>
+		<input type="button" value="(" class = "button blue"
+		onclick="calculator.display.value+='('"/>
+		<input type="button" value=")" class = "button blue"
+		onclick="calculator.display.value+=')'"/>
+		<input type="button" value="power" class = "button blue"
+		onclick="pow()"/>	    
+		<input type="button" value="," class = "button blue"
+		onclick="calculator.display.value+=','"/>
+		
+	<br>
+    <p>
+	    <input type="button" value="1" class = "button black"
+		onclick="calculator.display.value+='1'"/>
+		<input type="button" value="2" class = "button black"
+		onclick="calculator.display.value+='2'"/>
+		<input type="button" value="3" class = "button black"
+		onclick="calculator.display.value+='3'"/>
+		<input type="button" value="+" class = "button silver"
+		onclick="calculator.display.value+='+'"/>
+		<input type="button" value="-" class = "button silver"
+		onclick="calculator.display.value+='-'"/>
+
+	<br>
+     <p>
+	    <input type="button" value="4" class = "button black"
+		onclick="calculator.display.value+='4'"/>
+		<input type="button" value="5" class = "button black"
+		onclick="calculator.display.value+='5'"/>
+		<input type="button" value="6" class = "button black"
+		onclick="calculator.display.value+='6'"/>
+		<input type="button" value="x" class = "button silver"
+		onclick="calculator.display.value+='*'"/>
+		<input type="button" value="/" class = "button silver"
+		onclick="calculator.display.value+='/'"/>
+
+	<br>
+	 <p>
+	    <input type="button" value="7" class = "button black"
+		onclick="calculator.display.value+='7'"/>
+		<input type="button" value="8" class = "button black"
+		onclick="calculator.display.value+='8'"/>
+		<input type="button" value="9" class = "button black"
+		onclick="calculator.display.value+='9'"/>
+		<input type="button" value="DEL" class = "button silver"
+		onclick="calculator.display.value =''"/>
+		<input type="button" value="=" class = "button silver"
+		onclick="equal()"/>
+	
+	<br>
+	<p>
+	
+	    <input type="button" value="0" class = "button black"
+		onclick="calculator.display.value+='0'">
+        <input type="button" value="." class = "button brown"
+		onclick="calculator.display.value+='.'">
+	    <input type="button" value="PI" class = "button brown" 
+		onclick="PI()">
+		<input type="button" value="(-)" class = "button silver"
+		onclick="changeSign()">
+		<input type="button" value="*stat" class = "button green"
+		onclick="location.href='statcalculator.html'">
+	<br>
+
+	
+	
+	
+	
+		
+<SCRIPT>
+var valueSaved = "";
+
+function changeSign() {
+document.calculator.display.value = -1*(document.calculator.display.value);
+}
+
+function ab(){
+document.calculator.display.value += "abs(";
+}
+
+function EE() {
+document.calculator.display.value += "*E(";
+}
+
+function E(value) {
+return Math.pow(10,value);
+}
+
+function abs(value) {
+if (value >= 0)
+   return value;
+   else 
+   return -1*value;
+}
+
+function save() {
+valueSaved = document.calculator.display.value;
+}
+
+function load() {
+document.calculator.display.value += valueSaved;
+}
+
+
+function factorial(){
+document.calculator.display.value += "factorial(";
+}
+function si(){
+document.calculator.display.value += "sin(";
+}
+function sin(value) {
+return Math.sin(value);
+}
+function co(){
+document.calculator.display.value += "cos(";
+}
+function cos(value) {
+return Math.cos(value);
+}
+function ta(){
+document.calculator.display.value += "tan(";
+}
+function tan(value) {
+return Math.tan(value);
+}
+
+function arcs(){
+document.calculator.display.value += "arcsin(";
+}
+function arcsin(value) {
+return (Math.asin(value));
+}
+function arcc(){
+document.calculator.display.value += "arccos(";
+}
+function arccos(value) {
+return (Math.acos(value));
+}
+function arct(){
+document.calculator.display.value += "arctan(";
+}
+function arctan(value) {
+return (Math.atan(value));
+}
+function naturallog(){
+document.calculator.display.value += "ln(";
+}
+function ln(value) {
+return (Math.log(value));
+}
+
+function lo(){
+document.calculator.display.value += "log(";
+}
+function log(value) {
+return (Math.log(value)) / ln(10);
+}
+
+function sqr(){
+document.calculator.display.value += "sqrt(";
+}
+function sqrt(value) {
+return (Math.sqrt(value));
+}
+
+function fact(){
+document.calculator.display.value += "factorial(";
+}
+
+function factorial(value) {
+if (value < 0) {
+    return NaN;	
+  } else if (value == 0) {
+      return 1;	  
+  } else {
+      return (value * factorial(value - 1));
+  }
+}
+
+function pow(){
+document.calculator.display.value += "power(";
+}
+function power(value1, value2) {
+return (Math.pow(value1,value2));
+}
+
+function PI(){
+document.calculator.display.value += "pi()";
+}
+function pi(){
+return Math.PI;
+}
+
+function ex(){
+document.calculator.display.value += "exp(";
+}
+function exp(value) {
+return (Math.exp(value));
+}
+
+
+
+function equal(){
+document.calculator.display.value=eval(calculator.display.value);
+}
+
+
+
+</script>
+	
+	
+
+</form>
+
+</div>
+
+</body>
+</html>
